@@ -1,19 +1,8 @@
 <?php
 
-use DI\ContainerBuilder;
-use Slim\Factory\AppFactory;
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/../config/settings.php';
-
-$containerBuilder = new ContainerBuilder();
-$container = $containerBuilder->build();
-
-AppFactory::setContainer($container);
-$app = AppFactory::create();
-$callableResolver = $app->getCallableResolver();
-
-$routes = require __DIR__ . '/../config/routes.php';
-$routes($app);
-
-$app->run();
+require __DIR__ . '/../config/bootstrap.php';
