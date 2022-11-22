@@ -1,9 +1,8 @@
 <?php
 
 use DI\Container;
-use Doctrine\Common\Cache\Psr6\DoctrineProvider;
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\ORMSetup;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
@@ -16,13 +15,13 @@ $container->set(EntityManager::class, static function (Container $c): EntityMana
     $settings = $c->get('settings');
 
     $cache = $settings['doctrine']['dev_mode'] ?
-        DoctrineProvider::wrap(new ArrayAdapter()) :
-        DoctrineProvider::wrap(new FilesystemAdapter(directory: $settings['doctrine']['cache_dir']));
+        new ArrayAdapter() :
+        new FilesystemAdapter(directory: $settings['doctrine']['cache_dir']);
 
-    $config = Setup::createAttributeMetadataConfiguration(
+    $config = ORMSetup::createAttributeMetadataConfiguration(
         $settings['doctrine']['metadata_dirs'],
         $settings['doctrine']['dev_mode'],
-            null,
+        null,
         $cache
     );
 

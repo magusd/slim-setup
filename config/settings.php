@@ -8,7 +8,7 @@ return [
     ],
     'doctrine' => [
         'dev_mode' => true,
-        'cache_dir' => __DIR__ . '/var/doctrine',
+        'cache_dir' => __DIR__ . '/../var/doctrine',
         'metadata_dirs' => [__DIR__ . '/../app/Entities'],
         'connection' => [
             'driver' => $_ENV['DB_DRIVER'],
