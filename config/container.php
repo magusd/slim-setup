@@ -10,6 +10,7 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 $container = new Container();
 
 $container->set('settings', require __DIR__ . '/settings.php');
+
 $container->set(EntityManager::class, static function (Container $c): EntityManager {
     /** @var array $settings */
     $settings = $c->get('settings');
