@@ -1,15 +1,10 @@
 <?php
 
 return [
-    'slim' => [
-        'displayErrorDetails' => true,
-        'logErrors' => true,
-        'logErrorDetails' => true,
-    ],
     'doctrine' => [
         'dev_mode' => true,
         'cache_dir' => __DIR__ . '/../var/doctrine',
-        'metadata_dirs' => [__DIR__ . '/../app/Entities'],
+        'metadata_dirs' => [__DIR__ . '/../app/Entity'],
         'connection' => [
             'driver' => $_ENV['DB_DRIVER'],
             'path' => $_ENV['DB_DRIVER'] === 'pdo_sqlite' ? __DIR__ . '/../database/database.sqlite' : '',
