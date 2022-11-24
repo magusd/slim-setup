@@ -1,6 +1,6 @@
 <?php
 
-use App\Controllers\TestController;
+use App\Controller\TestController;
 use Slim\App;
 use Slim\Routing\RouteCollectorProxy;
 
