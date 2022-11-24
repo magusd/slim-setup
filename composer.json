@@ -18,7 +18,10 @@
         "php-di/php-di": "^6.4",
         "doctrine/orm": "^2.13",
         "symfony/cache": "^6.1",
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.5",
+        "php-di/slim-bridge": "^3.2",
+        "symfony/serializer": "^6.1",
+        "symfony/property-access": "^6.1"
     },
     "require-dev": {
         "symfony/var-dumper": "^6.1"
