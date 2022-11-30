@@ -5,14 +5,11 @@ namespace App\Service;
 use App\Entity\User;
 use Doctrine\ORM\EntityManager;
 
-class UserService
+class UserRepository
 {
-    private EntityManager $em;
-
-    public function __construct(EntityManager $em)
-    {
-        $this->em = $em;
-    }
+    public function __construct(
+        private readonly EntityManager $em
+    ) {}
 
     public function findAll(): array
     {
