@@ -20,7 +20,7 @@
         "symfony/cache": "^6.1",
         "vlucas/phpdotenv": "^5.5",
         "php-di/slim-bridge": "^3.2",
-        "symfony/serializer": "^6.1",
+        "symfony/serializer": "^6.2",
         "symfony/property-access": "^6.1"
     },
     "require-dev": {
