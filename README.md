@@ -12,13 +12,13 @@ Included packages:
 ```
 Slim Framework
 Doctrine ORM
-PHP-DI container
-phpdotenv
+PHP-DI container - WIP
+Environment variables support
+Docker (with web server, PHP and database) - WIP
 ```
 
 Roadmap:
 ```
 Middlewares
 JWT authentication
-Docker (with web server, PHP and database)
 ```
