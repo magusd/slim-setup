@@ -1,6 +1,6 @@
 <?php
 
-use App\Service\UserRepository;
+use App\Repository\UserRepository;
 use DI\Container;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
