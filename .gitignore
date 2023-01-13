@@ -1,4 +1,6 @@
 /vendor
+/database
 .idea
 .env
 /var
+.phpunit.result.cache
