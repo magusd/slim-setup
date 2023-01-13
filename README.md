@@ -1,24 +1,37 @@
 
-# slim-setup
+# Slim
 
-**A minimal skeleton for bootstraping PHP projects**
+**A minimal skeleton for bootstrapping PHP projects**
 
 *This project is a work in progress.*
 
 ___
 
-Included packages:
+### Features:
 
+#### 🔋 Included batteries:
 ```
-Slim Framework
-Doctrine ORM
-PHP-DI container - WIP
-Environment variables support
-Docker (with web server, PHP and database) - WIP
+- Slim Framework
+- Doctrine ORM
+- PHPUnit
+- Docker support (PHP-FPM + Nginx)
+- Dependency injection with PHP-DI
+- Environment variables support
 ```
 
-Roadmap:
+#### 👷 Currently working on:
 ```
-Middlewares
-JWT authentication
+- Service container
+- Database for Docker
 ```
+
+#### ⏳ Roadmap:
+```
+- Middlewares
+- JWT authentication
+```
+
+---
+
+### Instructions:
+```WIP```
