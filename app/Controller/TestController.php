@@ -2,33 +2,20 @@
 
 namespace App\Controller;
 
-use App\Repository\UserRepository;
-use Psr\Http\Message\ResponseInterface as Response;
+use App\Entity\User;
+use Doctrine\ORM\EntityManager;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
+use Slim\Http\Response;
 
 class TestController extends Controller
 {
-    public function index(Request $request, Response $response): Response
+    public function index(Request $request, Response $response): ResponseInterface
     {
-        /** @var UserRepository $userRepository */
-        $userRepository = $this->get(UserRepository::class);
-        $users = $userRepository->findAll();
+        /* @var EntityManager $em */
+        $em = $this->get(EntityManager::class);
+        $userRepository = $em->getRepository(User::class);
 
-        $normalizers = [new ObjectNormalizer()];
-        $encoders = [new JsonEncoder()];
-        $serializer = new Serializer($normalizers, $encoders);
-
-        $json = $serializer->serialize([
-            'data' => $users,
-        ], 'json');
-
-        $response->getBody()->write($json);
-
-        return $response
-            ->withHeader('Content-Type', 'application/json')
-            ->withStatus(200);
+        return $response->withJson(['data' => $userRepository->findAll()]);
     }
 }
