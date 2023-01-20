@@ -26,6 +26,8 @@
     "require-dev": {
         "symfony/var-dumper": "^6.1",
         "phpunit/phpunit": "^9",
-        "laravel/pint": "^1.4"
+        "laravel/pint": "^1.4",
+        "phpstan/phpstan": "^1.9",
+        "squizlabs/php_codesniffer": "*"
     }
 }

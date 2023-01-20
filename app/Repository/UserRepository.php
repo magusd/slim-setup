@@ -9,8 +9,12 @@ class UserRepository
 {
     public function __construct(
         private readonly EntityManager $em
-    ) {}
+    ) {
+    }
 
+    /**
+     * @return array<User>
+     */
     public function findAll(): array
     {
         $usersRepository = $this->em->getRepository(User::class);
