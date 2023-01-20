@@ -16,14 +16,13 @@ class TestController extends Controller
         /** @var UserRepository $userRepository */
         $userRepository = $this->get(UserRepository::class);
         $users = $userRepository->findAll();
-        // $user = $userRepository->findById(1);
 
         $normalizers = [new ObjectNormalizer()];
         $encoders = [new JsonEncoder()];
         $serializer = new Serializer($normalizers, $encoders);
 
         $json = $serializer->serialize([
-            'data' => $users
+            'data' => $users,
         ], 'json');
 
         $response->getBody()->write($json);
