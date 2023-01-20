@@ -6,7 +6,13 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
 
-require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/../config/bootstrap.php';
+require __DIR__.'/../vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/../');
+$dotenv->load();
+
+$container = new Container();
+$containerSettings = require __DIR__.'/../config/container.php';
+$containerSettings($container);
 
 ConsoleRunner::run(new SingleManagerProvider($container->get(EntityManager::class)));
