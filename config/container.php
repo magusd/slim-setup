@@ -1,6 +1,9 @@
 <?php
 
+use App\Repository\UserRepository;
+use App\Service\UserService;
 use DI\Container;
+use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\ORMSetup;
@@ -27,21 +30,26 @@ return function (Container $container) {
             $cache
         );
 
-        return EntityManager::create($settings['doctrine']['connection'], $config);
+        $driverManager = DriverManager::getConnection($settings['doctrine']['connection'], $config);
+
+        return new EntityManager($driverManager, $config);
     });
+
+    $container->set(UserRepository::class, new UserRepository($container->get(EntityManager::class)));
+    $container->set(UserService::class, new UserService($container->get(UserRepository::class)));
 
     $container->set(App::class, function (Container $c): App {
         $app = AppFactory::createFromContainer($c);
 
         $app->addBodyParsingMiddleware();
         $app->addRoutingMiddleware();
-        $app->addErrorMiddleware(true, false, false);
-
-        $routes = require __DIR__.'/../routes/web.php';
-        $routes($app);
 
         $api = require __DIR__.'/../routes/api.php';
         $api($app);
+
+        $errorMiddleware = $app->addErrorMiddleware(true, false, false);
+        $errorHandler = $errorMiddleware->getDefaultErrorHandler();
+        $errorHandler->forceContentType('application/json');
 
         return $app;
     });
