@@ -1,15 +1,15 @@
-
 # Slim
 
 **A minimal skeleton for bootstrapping PHP projects**
 
-*This project is a work in progress.*
+_This project is a work in progress._
 
-___
+---
 
 ### Features:
 
 #### 🔋 Included batteries:
+
 ```
 - Slim Framework
 - Doctrine ORM
@@ -20,12 +20,14 @@ ___
 ```
 
 #### 👷 Currently working on:
+
 ```
 - Service container
 - Database for Docker
 ```
 
 #### ⏳ Roadmap:
+
 ```
 - Middlewares
 - JWT authentication
@@ -34,4 +36,13 @@ ___
 ---
 
 ### Instructions:
-```WIP```
+
+```bash
+git clone git@github.com:davisenra/slim-setup.git
+cd slim-setup
+cp .env.example .env
+docker-compose up -d
+docker-compose exec php-fpm composer install
+
+open http://localhost:8080
+```

@@ -20,11 +20,26 @@ services:
     build:
       context: .
       dockerfile: "docker/php-fpm/Dockerfile"
-    ports:
-      - "9000:9000"
     volumes:
       - ".:/var/www/html"
     working_dir: "/var/www/html"
+    env_file:
+      - .env
+    networks:
+      - internal
+
+  mysql:
+    container_name: mysql
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./database:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: slim_setup
+      MYSQL_USER: slim_setup
+      MYSQL_PASSWORD: slim_setup
     networks:
       - internal
 networks:
